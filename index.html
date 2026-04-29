@@ -11,141 +11,144 @@
             --gold-leaf: #d4af37;
             --slate-gray: #94a3b8;
             --pure-white: #ffffff;
-            --card-glass: rgba(13, 20, 36, 0.8);
+            --card-glass: rgba(13, 20, 36, 0.9);
             --security-red: #ff3e3e;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--deep-navy); color: var(--pure-white); line-height: 1.6; }
+        body { background-color: var(--deep-navy); color: var(--pure-white); line-height: 1.6; scroll-behavior: smooth; }
 
-        /* GATILHO: DINAMISMO */
+        /* HEADER & HERO */
         .live-tag {
-            background: #ff4d4d; color: white; padding: 4px 12px; border-radius: 50px;
-            font-size: 0.75rem; font-weight: 900; text-transform: uppercase;
-            display: inline-flex; align-items: center; gap: 6px; animation: pulse 2s infinite;
+            background: #ff4d4d; color: white; padding: 6px 16px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 900; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 8px; animation: pulse 2s infinite;
+            margin-bottom: 20px;
         }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
         header {
-            min-height: 90vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 40px 20px;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.08) 0%, rgba(2, 8, 23, 1) 70%);
+            min-height: 95vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 60px 20px;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.1) 0%, rgba(2, 8, 23, 1) 80%);
         }
 
         header h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem); margin: 20px 0;
+            font-size: clamp(2.5rem, 6vw, 4rem); margin: 20px 0;
             background: linear-gradient(to right, #fff, var(--slate-gray));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            max-width: 1200px; line-height: 1.1;
         }
 
         header h1 span { color: var(--cyber-cyan); -webkit-text-fill-color: var(--cyber-cyan); }
-        .hero-sub { color: var(--slate-gray); font-size: 1.2rem; max-width: 850px; margin-bottom: 40px; }
+        .hero-sub { color: var(--slate-gray); font-size: 1.3rem; max-width: 900px; margin-bottom: 50px; }
 
-        /* EXPERTS */
+        /* EXPERTS SECTION */
         .expert-section {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px; max-width: 1200px; margin: -80px auto 60px; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; max-width: 1250px; margin: -120px auto 80px; padding: 0 20px;
         }
 
         .expert-card {
-            background: var(--card-glass); padding: 35px; border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+            background: var(--card-glass); padding: 0; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px);
+            overflow: hidden; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .expert-card:hover { border-color: var(--cyber-cyan); transform: translateY(-10px); }
+
+        .expert-img {
+            width: 100%; height: 400px; object-fit: cover;
+            border-bottom: 3px solid var(--cyber-cyan);
+            filter: grayscale(40%); transition: 0.4s;
+        }
+        .expert-card:hover .expert-img { filter: grayscale(0%); }
+
+        .expert-content { padding: 35px; }
+        .expert-card h3 { color: var(--pure-white); margin-bottom: 8px; font-size: 1.7rem; }
+        .expert-card .role { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--cyber-cyan); margin-bottom: 15px; display: block; letter-spacing: 2px; }
+        .expert-card p { font-size: 0.95rem; color: var(--slate-gray); }
+
+        /* SQUAD BANNER */
+        .squad-banner {
+            max-width: 1150px; margin: 100px auto; padding: 50px;
+            background: rgba(255,255,255,0.03); border-radius: 40px;
+            display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: inset 0 0 50px rgba(0, 242, 255, 0.05);
         }
 
-        .expert-card h3 { color: var(--cyber-cyan); margin-bottom: 10px; }
-        .expert-card .role { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--slate-gray); margin-bottom: 15px; display: block; }
+        .squad-img {
+            flex: 1.2; min-width: 350px; border-radius: 24px;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.15);
+            border: 1px solid var(--cyber-cyan);
+        }
+
+        .squad-text { flex: 1; min-width: 300px; }
+        .squad-text h2 { font-size: 2.5rem; margin-bottom: 25px; color: var(--pure-white); }
+        .squad-text p { color: var(--slate-gray); font-style: italic; font-size: 1.2rem; line-height: 1.8; }
 
         /* CURRICULUM */
-        .curriculum-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
-        .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .curriculum-container { max-width: 1150px; margin: 100px auto; padding: 0 20px; }
+        .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .module-item {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-            padding: 35px; border-radius: 20px; border-left: 4px solid var(--cyber-cyan);
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px; border-radius: 24px; border-left: 6px solid var(--cyber-cyan);
+            transition: 0.3s;
         }
-        .module-item h4 { color: var(--cyber-cyan); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
-        .module-item h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--white); }
-        .module-list { list-style: none; color: var(--slate-gray); font-size: 0.95rem; }
-        .module-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
-        .module-list li::before { content: "▹"; position: absolute; left: 0; color: var(--cyber-cyan); font-weight: bold; }
+        .module-item:hover { background: rgba(255,255,255,0.06); }
+        .module-item h4 { color: var(--cyber-cyan); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px; }
+        .module-item h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--white); }
+        .module-list { list-style: none; color: var(--slate-gray); font-size: 1rem; }
+        .module-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .module-list li::before { content: "▹"; position: absolute; left: 0; color: var(--cyber-cyan); font-weight: bold; font-size: 1.2rem; }
 
-        /* SEÇÃO SECRETA: GATILHO DA CURIOSIDADE EXTREMA */
+        /* PROTOCOLO BLACK-BOX (SECRET) */
         .black-box-section {
-            margin-top: 80px;
-            background: linear-gradient(145deg, #050a14, #0a1120);
-            border: 2px solid #1e293b;
-            padding: 60px 40px;
-            border-radius: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            margin-top: 100px; background: linear-gradient(145deg, #050a14, #0d1424);
+            border: 2px solid #1e293b; padding: 80px 50px; border-radius: 40px;
+            text-align: center; position: relative; overflow: hidden;
         }
 
         .black-box-section::before {
-            content: "TOP SECRET";
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--security-red);
-            color: white;
-            padding: 5px 40px;
-            font-weight: 900;
-            font-size: 0.7rem;
-            transform: rotate(45deg);
+            content: "TOP SECRET"; position: absolute; top: 30px; right: -40px;
+            background: var(--security-red); color: white; padding: 8px 50px;
+            font-weight: 900; font-size: 0.8rem; transform: rotate(45deg);
         }
 
-        .locked-content {
-            filter: blur(4px);
-            opacity: 0.3;
-            user-select: none;
-            margin: 30px 0;
-        }
-
-        .black-box-title {
-            color: var(--pure-white);
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
+        .locked-content { filter: blur(7px); opacity: 0.15; user-select: none; margin: 40px 0; }
+        .black-box-title { color: var(--pure-white); font-size: 2.5rem; font-weight: 900; letter-spacing: 3px; margin-bottom: 25px; }
 
         .security-badge {
-            display: inline-block;
-            border: 1px solid var(--security-red);
-            color: var(--security-red);
-            padding: 5px 15px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .black-box-desc {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--slate-gray);
-            font-size: 1.1rem;
-            font-style: italic;
+            display: inline-block; border: 1px solid var(--security-red); color: var(--security-red);
+            padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; font-weight: 800; margin-bottom: 30px;
         }
 
         /* PRICING */
-        .pricing-wrap { padding: 100px 20px; background: #01040a; }
-        .price-container { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+        .pricing-wrap { padding: 120px 20px; background: #01040a; }
+        .price-container { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
         .price-card {
-            background: var(--card-glass); padding: 60px 40px; border-radius: 30px;
-            flex: 1; min-width: 340px; border: 1px solid #1e293b; text-align: center;
+            background: var(--card-glass); padding: 70px 50px; border-radius: 40px;
+            flex: 1; min-width: 360px; border: 1px solid #1e293b; text-align: center;
+            transition: 0.4s ease-out;
         }
+        .price-card:hover { transform: scale(1.03); border-color: var(--cyber-cyan); }
         .price-card.vip { border-color: var(--gold-leaf); }
-        .price-card h2 { font-size: 3.8rem; color: var(--white); margin: 30px 0; font-weight: 900; }
-        .price-card h2 span { font-size: 1.2rem; color: var(--slate-gray); }
+        .price-card h2 { font-size: 4.2rem; color: var(--white); margin: 35px 0; font-weight: 900; }
+        .price-card h2 span { font-size: 1.3rem; color: var(--slate-gray); }
 
         .btn {
-            display: block; padding: 22px; border-radius: 12px; text-decoration: none;
-            font-weight: 900; text-transform: uppercase; transition: 0.3s;
+            display: block; padding: 24px; border-radius: 14px; text-decoration: none;
+            font-weight: 900; text-transform: uppercase; transition: 0.3s; letter-spacing: 1.5px;
         }
-        .btn-cyan { background: var(--cyber-cyan); color: #000; }
-        .btn-gold { background: var(--gold-leaf); color: #000; }
+        .btn-cyan { background: var(--cyber-cyan); color: #000; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2); }
+        .btn-gold { background: var(--gold-leaf); color: #000; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
 
-        @media (max-width: 768px) { .module-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .module-grid { grid-template-columns: 1fr; } 
+            .squad-banner { flex-direction: column; text-align: center; padding: 30px; }
+            header h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -154,31 +157,50 @@
         <div class="live-tag"><span>●</span> 100% ONLINE E AO VIVO</div>
         <h1>Domine a Engenharia de Auditoria.<br><span>O Fisco 4.0 começa aqui.</span></h1>
         <p class="hero-sub">A única formação interativa que une Ciência de Dados, Prática de Fiscalização e a visão técnica exclusiva da Reforma Tributária (IBS/CBS) em tempo real.</p>
-        <a href="#investimento" class="btn btn-cyan" style="padding: 20px 60px;">Garantir Acesso à Elite</a>
+        <a href="#investimento" class="btn btn-cyan" style="padding: 24px 80px;">Garantir Acesso à Elite</a>
     </header>
 
     <div class="expert-section">
         <div class="expert-card">
-            <span class="role">The Architect | Lead</span>
-            <h3>Claudio Couto</h3>
-            <p>Cientista de Dados. Mentor de Inteligência Agêntica. Ele ensina a construir o "Cérebro Digital" que automatiza a fiscalização com soberania total de dados.</p>
+            <img src="https://raw.githubusercontent.com/Couto87/auditor/main/Couto.png" alt="Couto" class="expert-img">
+            <div class="expert-content">
+                <span class="role">The Architect | Lead</span>
+                <h3>Couto</h3>
+                <p>Cientista de Dados. Mentor de Inteligência Agêntica. Responsável pela infraestrutura técnica e automação avançada.</p>
+            </div>
         </div>
+
         <div class="expert-card">
-            <span class="role" style="color: var(--gold-leaf);">The Insider | Comitê Técnico</span>
-            <h3>Isabella Castro</h3>
-            <p>Membro do corpo técnico do Comitê Gestor IBS/CBS. Traz as diretrizes reais e os desafios de transição que o mercado ainda não conhece.</p>
+            <img src="https://raw.githubusercontent.com/Couto87/auditor/main/Isabella.png" alt="Isabella Castro" class="expert-img">
+            <div class="expert-content">
+                <span class="role" style="color: var(--gold-leaf);">The Insider | Comitê Técnico</span>
+                <h3>Isabella Castro</h3>
+                <p>Membro do corpo técnico do Comitê Gestor IBS/CBS. Traz a inteligência normativa de transição e bastidores da Reforma.</p>
+            </div>
         </div>
+
         <div class="expert-card">
-            <span class="role">The Veteran | 28 anos de Fisco</span>
-            <h3>Josi</h3>
-            <p>Auditora Fiscal de carreira. Especialista em Malha Fina e SPED. A ponte entre o rigor da lei e a potência da Inteligência Artificial.</p>
+            <img src="https://raw.githubusercontent.com/Couto87/auditor/main/Josi.png" alt="Josi" class="expert-img">
+            <div class="expert-content">
+                <span class="role">The Veteran | 28 anos de Fisco</span>
+                <h3>Josi</h3>
+                <p>Auditora Fiscal de carreira há quase 3 décadas. Especialista em Malha Fina, SPED e operacionalização da auditoria real.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="squad-banner">
+        <img src="https://raw.githubusercontent.com/Couto87/auditor/main/Os%20tres.png" alt="Equipe Técnica" class="squad-img">
+        <div class="squad-text">
+            <h2>Unidade Técnica Incomparável</h2>
+            <p>"Nossa missão é transformar a complexidade da Reforma Tributária em soberania tecnológica para o auditor. Unimos o código, a lei e a prática em um único fluxo de inteligência ao vivo."</p>
         </div>
     </div>
 
     <div class="curriculum-container">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 2.5rem;">Grade Curricular Estratégica</h2>
-            <p style="color: var(--cyber-cyan); font-weight: 800; letter-spacing: 2px;">AULAS AO VIVO: INTERAÇÃO, CÓDIGO E RESULTADO IMEDIATO</p>
+        <div style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-size: 3rem; color: var(--pure-white);">Grade Curricular Estratégica</h2>
+            <p style="color: var(--cyber-cyan); font-weight: 800; letter-spacing: 3px; margin-top: 10px;">IMERSÃO TOTAL E RESULTADO IMEDIATO</p>
         </div>
 
         <div class="module-grid">
@@ -187,7 +209,7 @@
                 <h3>Engenharia de RAG & Soberania</h3>
                 <ul class="module-list">
                     <li>Construção de bases de conhecimento privadas (Offline).</li>
-                    <li>Soberania de Dados: Como não vazar sigilo fiscal para a nuvem.</li>
+                    <li>Segurança de Dados: Como não vazar sigilo fiscal para a nuvem.</li>
                     <li>Vetorização Normativa do CTN e legislações locais.</li>
                 </ul>
             </div>
@@ -196,46 +218,44 @@
                 <h4>Módulo 02 • Por Josi</h4>
                 <h3>Malha Fina & Auditoria 2.0</h3>
                 <ul class="module-list">
-                    <li>Extração massiva e cruzamento de NF-es e SPED.</li>
+                    <li>Extração massiva e cruzamento inteligente de NF-es e SPED.</li>
                     <li>Redação de Autos de Infração com blindagem jurídica.</li>
-                    <li>Workshop Prático: 28 anos de auditoria acelerados por IA.</li>
+                    <li>Workshop: Casos reais resolvidos com IA em tempo recorde.</li>
                 </ul>
             </div>
 
             <div class="module-item">
                 <h4>Módulo 03 • Por Isabella Castro</h4>
-                <h3>O Fisco IBS/CBS (The Insider View)</h3>
+                <h3>O Fisco IBS/CBS (Insider View)</h3>
                 <ul class="module-list">
-                    <li>Discussões técnicas de bastidores do Comitê Gestor.</li>
+                    <li>Diretrizes técnicas exclusivas do Comitê Gestor.</li>
                     <li>Modelagem preditiva para o novo cenário de arrecadação.</li>
-                    <li>Preparação da infraestrutura para a transição compartilhada.</li>
+                    <li>Estratégias para a transição de competência compartilhada.</li>
                 </ul>
             </div>
 
             <div class="module-item">
                 <h4>Módulo 04 • Por Couto</h4>
-                <h3>Orquestração de Agentes Autônomos</h3>
+                <h3>Agentes Autônomos & Automação</h3>
                 <ul class="module-list">
-                    <li>Equipes de Agentes: Analistas e Revisores trabalhando em série.</li>
+                    <li>Criação de orquestras de Agentes (Analista + Revisor).</li>
                     <li>Automação de Workflow Fiscal via APIs seguras.</li>
-                    <li>Monitoramento em tempo real de contribuintes de alto risco.</li>
+                    <li>Monitoramento preditivo de contribuintes de alto risco.</li>
                 </ul>
             </div>
         </div>
 
         <div class="black-box-section">
-            <div class="security-badge">CLEARANCE LEVEL: 5 REQUIRED</div>
+            <div class="security-badge">SECURITY CLEARANCE: LEVEL 5 REQUIRED</div>
             <h3 class="black-box-title">O Protocolo Black-Box</h3>
-            
             <div class="locked-content">
-                <p>Módulo de Identificação de Grupos Econômicos Ocultos e OSINT Avançado</p>
-                <p>Simulador de Defesa de Grandes Escritórios para Teste de Estresse de Autos</p>
-                <p>Arquitetura de Influência Comportamental para Autorregularização Automática</p>
+                <p>Identificação Automatizada de Grupos Econômicos e Laranjas</p>
+                <p>Stress Test de Autos: Simulando defesas de grandes bancas de advocacia</p>
+                <p>Engenharia de Persuasão para Autorregularização Automática</p>
             </div>
-
-            <div class="black-box-desc">
-                "Existem camadas de inteligência que não podem ser publicadas em uma página aberta. <br>
-                Técnicas de <strong>vantagem assimétrica</strong> que permanecem exclusivamente entre nós e nossos alunos dentro dos encontros ao vivo."
+            <div style="max-width: 800px; margin: 0 auto; color: var(--slate-gray); font-size: 1.2rem; font-style: italic; line-height: 1.8;">
+                "Existem camadas de inteligência que não podem ser expostas em uma página pública. <br>
+                Técnicas de <strong>vantagem assimétrica</strong> reveladas exclusivamente dentro dos nossos encontros ao vivo."
             </div>
         </div>
     </div>
@@ -246,9 +266,9 @@
                 <h3>Formação Individual</h3>
                 <p>Para o Auditor que busca a Elite</p>
                 <h2>R$ 1.297<span>,00</span></h2>
-                <ul class="module-list" style="text-align: left; margin: 30px 0;">
+                <ul class="module-list" style="text-align: left; margin: 35px 0;">
                     <li>✓ Mentorias Mensais AO VIVO (Online)</li>
-                    <li>✓ Scripts Python Exclusivos (By Couto)</li>
+                    <li>✓ Scripts Python Prontos para Uso (By Couto)</li>
                     <li>✓ Guia de Transição Técnica IBS/CBS</li>
                     <li>✓ Acesso ao Protocolo Black-Box</li>
                 </ul>
@@ -256,26 +276,27 @@
             </div>
 
             <div class="price-card vip">
-                <div style="background: var(--gold-leaf); color: black; padding: 5px 15px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; display: inline-block; margin-bottom: 20px;">REPARTIÇÕES & GOVERNO</div>
+                <div style="background: var(--gold-leaf); color: black; padding: 8px 20px; border-radius: 50px; font-weight: 900; font-size: 0.75rem; display: inline-block; margin-bottom: 25px; letter-spacing: 1px;">REPARTIÇÕES & GOVERNO</div>
                 <h3>VIP Corporativo</h3>
                 <p>Implementação Estratégica</p>
                 <h2>R$ 2.347<span>,00 / p.p.</span></h2>
-                <p style="color: var(--gold-leaf); font-weight: bold;">Contratação Mínima: R$ 30.000,00</p>
-                <ul class="module-list" style="text-align: left; margin: 30px 0;">
+                <p style="color: var(--gold-leaf); font-weight: bold; font-size: 1.1rem;">Contratação Mínima: R$ 20.000,00</p>
+                <ul class="module-list" style="text-align: left; margin: 35px 0;">
                     <li>✓ Consultoria de Deploy Local com Couto</li>
                     <li>✓ Sessão Privada de Bastidores com Isabella</li>
-                    <li>✓ Mentoria de Campo com Josi</li>
-                    <li>✓ Aceitamos Empenho / Inexigibilidade</li>
+                    <li>✓ Mentoria de Operação Real com Josi</li>
+                    <li>✓ Disponibilidade para Empenho / Inexigibilidade</li>
                 </ul>
                 <a href="#" class="btn btn-gold">Solicitar Proposta B2B</a>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 60px; color: var(--slate-gray); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p>© 2026 Engenharia de Auditoria Fiscal. <br>Liderado por Claudio Couto, Josi & Isabella Castro.</p>
-        <p style="margin-top: 15px; opacity: 0.5;">
-            Sessões interativas via videoconferência. <br>O Protocolo Black-Box é revelado apenas em ambiente restrito de aula.
+    <footer style="text-align: center; padding: 80px; color: var(--slate-gray); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); background: #000;">
+        <p style="font-weight: bold; color: var(--pure-white); margin-bottom: 10px;">© 2026 Engenharia de Auditoria Fiscal.</p>
+        <p>Liderado por Claudio Couto, Josi & Isabella Castro.</p>
+        <p style="margin-top: 20px; opacity: 0.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Sessões interativas via videoconferência. <br>O Protocolo Black-Box é revelado apenas em ambiente restrito de mentoria.
         </p>
     </footer>
 
