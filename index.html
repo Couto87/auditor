@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia de Auditoria: Inteligência para o Fisco Atual e do Amanhã</title>
+    <style>
+        :root {
+            --deep-navy: #020817;
+            --cyber-cyan: #00f2ff;
+            --gold-leaf: #d4af37;
+            --slate-gray: #94a3b8;
+            --pure-white: #ffffff;
+            --card-glass: rgba(13, 20, 36, 0.8);
+            --security-red: #ff3e3e;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--deep-navy); color: var(--pure-white); line-height: 1.6; }
+
+        /* GATILHO: DINAMISMO */
+        .live-tag {
+            background: #ff4d4d; color: white; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 900; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 6px; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        header {
+            min-height: 90vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 40px 20px;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.08) 0%, rgba(2, 8, 23, 1) 70%);
+        }
+
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem); margin: 20px 0;
+            background: linear-gradient(to right, #fff, var(--slate-gray));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        header h1 span { color: var(--cyber-cyan); -webkit-text-fill-color: var(--cyber-cyan); }
+        .hero-sub { color: var(--slate-gray); font-size: 1.2rem; max-width: 850px; margin-bottom: 40px; }
+
+        /* EXPERTS */
+        .expert-section {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; max-width: 1200px; margin: -80px auto 60px; padding: 0 20px;
+        }
+
+        .expert-card {
+            background: var(--card-glass); padding: 35px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+        }
+
+        .expert-card h3 { color: var(--cyber-cyan); margin-bottom: 10px; }
+        .expert-card .role { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--slate-gray); margin-bottom: 15px; display: block; }
+
+        /* CURRICULUM */
+        .curriculum-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+        .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .module-item {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+            padding: 35px; border-radius: 20px; border-left: 4px solid var(--cyber-cyan);
+        }
+        .module-item h4 { color: var(--cyber-cyan); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .module-item h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--white); }
+        .module-list { list-style: none; color: var(--slate-gray); font-size: 0.95rem; }
+        .module-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .module-list li::before { content: "▹"; position: absolute; left: 0; color: var(--cyber-cyan); font-weight: bold; }
+
+        /* SEÇÃO SECRETA: GATILHO DA CURIOSIDADE EXTREMA */
+        .black-box-section {
+            margin-top: 80px;
+            background: linear-gradient(145deg, #050a14, #0a1120);
+            border: 2px solid #1e293b;
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .black-box-section::before {
+            content: "TOP SECRET";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--security-red);
+            color: white;
+            padding: 5px 40px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            transform: rotate(45deg);
+        }
+
+        .locked-content {
+            filter: blur(4px);
+            opacity: 0.3;
+            user-select: none;
+            margin: 30px 0;
+        }
+
+        .black-box-title {
+            color: var(--pure-white);
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .security-badge {
+            display: inline-block;
+            border: 1px solid var(--security-red);
+            color: var(--security-red);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .black-box-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--slate-gray);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* PRICING */
+        .pricing-wrap { padding: 100px 20px; background: #01040a; }
+        .price-container { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+        .price-card {
+            background: var(--card-glass); padding: 60px 40px; border-radius: 30px;
+            flex: 1; min-width: 340px; border: 1px solid #1e293b; text-align: center;
+        }
+        .price-card.vip { border-color: var(--gold-leaf); }
+        .price-card h2 { font-size: 3.8rem; color: var(--white); margin: 30px 0; font-weight: 900; }
+        .price-card h2 span { font-size: 1.2rem; color: var(--slate-gray); }
+
+        .btn {
+            display: block; padding: 22px; border-radius: 12px; text-decoration: none;
+            font-weight: 900; text-transform: uppercase; transition: 0.3s;
+        }
+        .btn-cyan { background: var(--cyber-cyan); color: #000; }
+        .btn-gold { background: var(--gold-leaf); color: #000; }
+
+        @media (max-width: 768px) { .module-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="live-tag"><span>●</span> 100% ONLINE E AO VIVO</div>
+        <h1>Domine a Engenharia de Auditoria.<br><span>O Fisco 4.0 começa aqui.</span></h1>
+        <p class="hero-sub">A única formação interativa que une Ciência de Dados, Prática de Fiscalização e a visão técnica exclusiva da Reforma Tributária (IBS/CBS) em tempo real.</p>
+        <a href="#investimento" class="btn btn-cyan" style="padding: 20px 60px;">Garantir Acesso à Elite</a>
+    </header>
+
+    <div class="expert-section">
+        <div class="expert-card">
+            <span class="role">The Architect | Lead</span>
+            <h3>Claudio Couto</h3>
+            <p>Cientista de Dados. Mentor de Inteligência Agêntica. Ele ensina a construir o "Cérebro Digital" que automatiza a fiscalização com soberania total de dados.</p>
+        </div>
+        <div class="expert-card">
+            <span class="role" style="color: var(--gold-leaf);">The Insider | Comitê Técnico</span>
+            <h3>Isabella Castro</h3>
+            <p>Membro do corpo técnico do Comitê Gestor IBS/CBS. Traz as diretrizes reais e os desafios de transição que o mercado ainda não conhece.</p>
+        </div>
+        <div class="expert-card">
+            <span class="role">The Veteran | 28 anos de Fisco</span>
+            <h3>Josi</h3>
+            <p>Auditora Fiscal de carreira. Especialista em Malha Fina e SPED. A ponte entre o rigor da lei e a potência da Inteligência Artificial.</p>
+        </div>
+    </div>
+
+    <div class="curriculum-container">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 2.5rem;">Grade Curricular Estratégica</h2>
+            <p style="color: var(--cyber-cyan); font-weight: 800; letter-spacing: 2px;">AULAS AO VIVO: INTERAÇÃO, CÓDIGO E RESULTADO IMEDIATO</p>
+        </div>
+
+        <div class="module-grid">
+            <div class="module-item">
+                <h4>Módulo 01 • Por Couto</h4>
+                <h3>Engenharia de RAG & Soberania</h3>
+                <ul class="module-list">
+                    <li>Construção de bases de conhecimento privadas (Offline).</li>
+                    <li>Soberania de Dados: Como não vazar sigilo fiscal para a nuvem.</li>
+                    <li>Vetorização Normativa do CTN e legislações locais.</li>
+                </ul>
+            </div>
+
+            <div class="module-item">
+                <h4>Módulo 02 • Por Josi</h4>
+                <h3>Malha Fina & Auditoria 2.0</h3>
+                <ul class="module-list">
+                    <li>Extração massiva e cruzamento de NF-es e SPED.</li>
+                    <li>Redação de Autos de Infração com blindagem jurídica.</li>
+                    <li>Workshop Prático: 28 anos de auditoria acelerados por IA.</li>
+                </ul>
+            </div>
+
+            <div class="module-item">
+                <h4>Módulo 03 • Por Isabella Castro</h4>
+                <h3>O Fisco IBS/CBS (The Insider View)</h3>
+                <ul class="module-list">
+                    <li>Discussões técnicas de bastidores do Comitê Gestor.</li>
+                    <li>Modelagem preditiva para o novo cenário de arrecadação.</li>
+                    <li>Preparação da infraestrutura para a transição compartilhada.</li>
+                </ul>
+            </div>
+
+            <div class="module-item">
+                <h4>Módulo 04 • Por Couto</h4>
+                <h3>Orquestração de Agentes Autônomos</h3>
+                <ul class="module-list">
+                    <li>Equipes de Agentes: Analistas e Revisores trabalhando em série.</li>
+                    <li>Automação de Workflow Fiscal via APIs seguras.</li>
+                    <li>Monitoramento em tempo real de contribuintes de alto risco.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="black-box-section">
+            <div class="security-badge">CLEARANCE LEVEL: 5 REQUIRED</div>
+            <h3 class="black-box-title">O Protocolo Black-Box</h3>
+            
+            <div class="locked-content">
+                <p>Módulo de Identificação de Grupos Econômicos Ocultos e OSINT Avançado</p>
+                <p>Simulador de Defesa de Grandes Escritórios para Teste de Estresse de Autos</p>
+                <p>Arquitetura de Influência Comportamental para Autorregularização Automática</p>
+            </div>
+
+            <div class="black-box-desc">
+                "Existem camadas de inteligência que não podem ser publicadas em uma página aberta. <br>
+                Técnicas de <strong>vantagem assimétrica</strong> que permanecem exclusivamente entre nós e nossos alunos dentro dos encontros ao vivo."
+            </div>
+        </div>
+    </div>
+
+    <section id="investimento" class="pricing-wrap">
+        <div class="price-container">
+            <div class="price-card">
+                <h3>Formação Individual</h3>
+                <p>Para o Auditor que busca a Elite</p>
+                <h2>R$ 1.297<span>,00</span></h2>
+                <ul class="module-list" style="text-align: left; margin: 30px 0;">
+                    <li>✓ Mentorias Mensais AO VIVO (Online)</li>
+                    <li>✓ Scripts Python Exclusivos (By Couto)</li>
+                    <li>✓ Guia de Transição Técnica IBS/CBS</li>
+                    <li>✓ Acesso ao Protocolo Black-Box</li>
+                </ul>
+                <a href="#" class="btn btn-cyan">Garantir Minha Vaga</a>
+            </div>
+
+            <div class="price-card vip">
+                <div style="background: var(--gold-leaf); color: black; padding: 5px 15px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; display: inline-block; margin-bottom: 20px;">REPARTIÇÕES & GOVERNO</div>
+                <h3>VIP Corporativo</h3>
+                <p>Implementação Estratégica</p>
+                <h2>R$ 2.347<span>,00 / p.p.</span></h2>
+                <p style="color: var(--gold-leaf); font-weight: bold;">Contratação Mínima: R$ 30.000,00</p>
+                <ul class="module-list" style="text-align: left; margin: 30px 0;">
+                    <li>✓ Consultoria de Deploy Local com Couto</li>
+                    <li>✓ Sessão Privada de Bastidores com Isabella</li>
+                    <li>✓ Mentoria de Campo com Josi</li>
+                    <li>✓ Aceitamos Empenho / Inexigibilidade</li>
+                </ul>
+                <a href="#" class="btn btn-gold">Solicitar Proposta B2B</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 60px; color: var(--slate-gray); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p>© 2026 Engenharia de Auditoria Fiscal. <br>Liderado por Claudio Couto, Josi & Isabella Castro.</p>
+        <p style="margin-top: 15px; opacity: 0.5;">
+            Sessões interativas via videoconferência. <br>O Protocolo Black-Box é revelado apenas em ambiente restrito de aula.
+        </p>
+    </footer>
+
+</body>
+</html>
